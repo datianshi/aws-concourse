@@ -47,7 +47,7 @@ resources:
   type: git
   source:
     branch: master
-    uri: https://github.com/c0-ops/aws-concourse.git
+    uri: https://github.com/datianshi/aws-concourse.git
 - name: pcfawsops-terraform-state-put
   type: s3
   source:
@@ -89,7 +89,7 @@ resources:
 - name: ert-concourse
   type: git
   source:
-    uri: https://github.com/c0-ops/ert-concourse.git
+    uri: https://github.com/datianshi/ert-concourse.git
     branch: master
 
 jobs:
@@ -305,7 +305,7 @@ jobs:
   plan:
   - aggregate:
     - get: aws-prepare-get
-      passed: [deploy-ert]
+      passed: [aws-pcf-prepare]
       trigger: true
     - get: pcfawsops-terraform-state-get
   - task: aws-pcf-destroy
